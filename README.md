@@ -10,7 +10,7 @@ GET and append multiple videos at a time.
   
 GET playlists that user can stream on a seperate page. 
 
-A search button where users can search for videos they like. 
+A search button where users can search for videos they like - this would add additional query words to the current one, redefining the search pattern. 
 
 Functionality to livestream video events on the DOM. 
 
