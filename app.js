@@ -3,11 +3,15 @@ var input;
 var i = 0;
 var htmldata;
 
-
-function searchCallback(results) {
-
-
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (1 + max - min) + min);
 }
+
+
+//function searchCallback(results) {
+//
+//
+//}
 
 
 
@@ -32,7 +36,6 @@ function search(query){
             console.log('ajax complete ', data);
         },
         success: function(data) {
-            searchCallback(data);
             console.log(data);
             input = data;
             //console.log(input.items[0].id.videoId);
@@ -49,9 +52,9 @@ function buildPlayer(input) {
         htmldata = data;
         //$(".mainContent").append(htmldata);
         //var embed = input.items[i].id.videoId;
-            var embed = input.items[0].id.videoId;
+            i = randomNumber(0,10);
             $(".mainContent").append(htmldata);
-            $(".mainContent").children().children().attr('src', 'http://www.youtube.com/embed/'+embed+"");
+            $(".mainContent").children().children().attr('src', 'http://www.youtube.com/embed/'+input.items[i].id.videoId+"");
 
 
 
