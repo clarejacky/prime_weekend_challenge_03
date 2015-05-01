@@ -1,6 +1,7 @@
 var apikey = 'AIzaSyBVJJUB5vwtCNHdzPdoiQtjpZwaqAVaIXw'; // Put your API key here
 var input;
-
+var i = 0;
+var htmldata;
 
 
 function searchCallback(results) {
@@ -12,17 +13,7 @@ function searchCallback(results) {
 
 $(document).ready(function() {
 
-    search('feminism');
-    //var embedId = input.items[0].id.videoId;
-    //$.get("template.html", function (data){
-    //    $(".mainContent").append(data);
-    //        $(".mainContent").children().find("#videoembed").attr("src", "http://www.youtube.com/embed/"+embedId+"");
-    //
-    //});
-
-
-    //console.log(el);
-    //$(".videoUrl").attr("href", ""+el+"");
+    search('intersectional feminism');
 
 });
 
@@ -36,7 +27,7 @@ function search(query){
         dataType: 'json',
         crossDomain: true,
         //jsonp: 'json_callback',
-        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+query+'&type=video&videoCaption=closedCaption&maxResults=10&order=videoCount&key='+apikey+'',
+        url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+query+'&type=video&videoCaption=closedCaption&start-index=1&maxResults=10&orderby=published&key='+apikey+'',
         complete: function(data) {
             console.log('ajax complete ', data);
         },
@@ -44,7 +35,7 @@ function search(query){
             searchCallback(data);
             console.log(data);
             input = data;
-            console.log(input.items[0].id.videoId);
+            //console.log(input.items[0].id.videoId);
             buildPlayer(input);
         }
     });
@@ -52,11 +43,20 @@ function search(query){
 
 }
 
-function buildPlayer() {
-    var embedId = input.items[0].id.videoId;
+function buildPlayer(input) {
+    //var embedId = input.items[i].id.videoId;
     $.get("template.html", function (data){
-        $(".mainContent").append(data);
-        $(".mainContent").children().find("#videoembed").attr("src", "http://www.youtube.com/embed/"+embedId+"");
+        htmldata = data;
+        //$(".mainContent").append(htmldata);
+        //var embed = input.items[i].id.videoId;
+            var embed = input.items[0].id.videoId;
+            $(".mainContent").append(htmldata);
+            $(".mainContent").children().children().attr('src', 'http://www.youtube.com/embed/'+embed+"");
+
+
 
     });
+
+
+
 }

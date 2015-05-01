@@ -8,3 +8,9 @@ h4 {
     font-family: 'Indie Flower', cursive;
     text-align: center;
 }
+.videoInsert {
+    text-align: center;
+}
+#videoembed {
+    margin-top: 50px;
+}
