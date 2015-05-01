@@ -159,6 +159,7 @@ function search(query){
         },
         success: function(data) {
             searchCallback(data.results);
+            var embedId =
             console.log(data.results);
         }
     });
@@ -185,4 +186,23 @@ function search(query){
 
 }
 
+// Use this function to do stuff with your results.
+// It is called after 'search' is executed.
+//
+//function init() {
+//    gapi.client.setApiKey(apiKey);
+//    gapi.client.load("youtube", "v3", function (){
+//
+//
+//    });
+//}
+//
+//var request = gapi.client.youtube.search.list ({
+//    part: "snippet",
+//    type: "video",
+//    q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
+//    maxResults: 3,
+//    order: "videoCount",
+//    publishedAfter: ""
+//})
 

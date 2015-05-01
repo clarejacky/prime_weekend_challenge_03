@@ -1,37 +1,24 @@
 var apikey = 'AIzaSyBVJJUB5vwtCNHdzPdoiQtjpZwaqAVaIXw'; // Put your API key here
 var input;
 
-// Use this function to do stuff with your results.
-// It is called after 'search' is executed.
-//
-//function init() {
-//    gapi.client.setApiKey(apiKey);
-//    gapi.client.load("youtube", "v3", function (){
-//
-//
-//    });
-//}
-//
-//var request = gapi.client.youtube.search.list ({
-//    part: "snippet",
-//    type: "video",
-//    q: encodeURIComponent($("#search").val()).replace(/%20/g, "+"),
-//    maxResults: 3,
-//    order: "videoCount",
-//    publishedAfter: ""
-//})
+
 
 function searchCallback(results) {
 
 
 }
 
+
+
 $(document).ready(function() {
 
     search('feminism');
-    $.get("template.html", function (data){
-        $(".mainContent").append(data);
-    });
+    //var embedId = input.items[0].id.videoId;
+    //$.get("template.html", function (data){
+    //    $(".mainContent").append(data);
+    //        $(".mainContent").children().find("#videoembed").attr("src", "http://www.youtube.com/embed/"+embedId+"");
+    //
+    //});
 
 
     //console.log(el);
@@ -52,20 +39,24 @@ function search(query){
         url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q='+query+'&type=video&videoCaption=closedCaption&maxResults=10&order=videoCount&key='+apikey+'',
         complete: function(data) {
             console.log('ajax complete ', data);
-            data;
         },
         success: function(data) {
             searchCallback(data);
             console.log(data);
             input = data;
             console.log(input.items[0].id.videoId);
+            buildPlayer(input);
         }
     });
 
 
+}
 
+function buildPlayer() {
+    var embedId = input.items[0].id.videoId;
+    $.get("template.html", function (data){
+        $(".mainContent").append(data);
+        $(".mainContent").children().find("#videoembed").attr("src", "http://www.youtube.com/embed/"+embedId+"");
 
-
-
-
+    });
 }
