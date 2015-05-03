@@ -5,7 +5,7 @@ The template file is added to the DOM using a .get function after the page is re
 The js file contains the API call and jquery push to the DOM
 The stylesheet is in addtion to a bootstrap library that is in the project folder.
 
-##Longterm goals for this project:##
+##Longterm goals for this project:
 GET and append multiple videos at a time.
   
 GET playlists that user can stream on a seperate page. 
@@ -14,4 +14,4 @@ A search button where users can search for videos they like - this would add add
 
 Functionality to livestream video events on the DOM. 
 
-####All of these attributes are possible using the google youtubes API.#### 
+####All of these attributes are possible using the google youtubes API.
